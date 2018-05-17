@@ -1,0 +1,59 @@
+//Functie voor de Ellipse
+
+int x_mp = 200;
+int y_mp = 100;
+int rad_x = 100;
+int rad_y = 50;
+
+int s = 1;
+
+void setup() 
+{
+  size(640, 360);
+  background(255);
+}
+
+void draw() 
+{
+  
+  if (s==1)
+  {
+    s=0;
+    color t = color(0,0,0);
+    color r = color(255,0,0);
+    set(x_mp,y_mp,r);
+  
+    Ellipse(x_mp,y_mp,rad_x,rad_y,t);
+  }
+}
+
+void Ellipse(int x, int y, int radius_x, int radius_y, int t_color) 
+{
+  int x_cor;
+  float y_cor;
+  float X_kwadraat = 0; 
+  float A_kwadraat= 0;
+  float B_kwadraat = 0;
+  float y_new;
+  
+  B_kwadraat = (int)pow(radius_y,2);
+  A_kwadraat = (int)pow(radius_x,2);
+
+  for (x_cor=0; x_cor<=radius_x; x_cor++)
+  {
+    X_kwadraat = (int)pow(x_cor,2);
+
+    y_cor = ((float)radius_y/radius_x)*(sqrt(A_kwadraat-X_kwadraat));
+    
+    set(x_cor+x,(int)y_cor+y,t_color);
+    set(x-x_cor,(int)y_cor+y,t_color);
+    set(x_cor+x,y-(int)y_cor,t_color);
+    set(x-x_cor,y-(int)y_cor,t_color);
+    
+  }
+}
+    
+    
+    
+  
+  
